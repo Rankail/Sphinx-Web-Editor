@@ -1,0 +1,15 @@
+version: '3'
+services:
+  fe:
+    image: node:18-alpine
+    working_dir: /src
+    command: sh -c "npm i --silent && npm run dev"
+    ports:
+      - 5173:5173
+    volumes:
+      - ./:/src
+      - /src/node_modules
+    environment:
+      HOST: 0.0.0.0
+      PORT_OUTER: "5173"
+      PORT_INNER: "5173"
